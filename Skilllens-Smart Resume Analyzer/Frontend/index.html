@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skillens Resume Analyzer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="flex items-center justify-center min-h-screen p-4 transition-colors duration-300">
+    <div class="bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-xl w-full max-w-2xl mx-auto transition-colors duration-300">
+        <!-- Title and Description -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+                Skillens Resume Analyzer
+            </h1>
+            <p class="text-gray-600 dark:text-gray-400">
+                Check your resume's ATS score and get instant, actionable feedback.
+            </p>
+        </div>
+
+        <!-- File Upload Section -->
+        <div id="upload-section" class="flex flex-col items-center">
+            <label for="file-upload" class="relative cursor-pointer w-full p-8 text-center border-2 border-dashed rounded-xl border-gray-300 dark:border-gray-600 hover:border-indigo-500 transition-colors duration-300">
+                <svg class="mx-auto h-12 w-12 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-4-4v-1a4 4 0 014-4h10a4 4 0 014 4v1a4 4 0 01-4 4H7z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12V9a3 3 0 00-3-3H9a3 3 0 00-3 3v3m9 0l-3 3m0-3l-3 3m-1 0h6" />
+                </svg>
+                <span class="mt-2 block text-sm font-medium text-gray-900 dark:text-white">
+                    Click to upload a .txt file
+                </span>
+                <span class="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                    or paste your resume below
+                </span>
+                <input id="file-upload" name="file-upload" type="file" class="sr-only" accept=".txt">
+            </label>
+             <textarea id="resume-text-area" class="mt-4 w-full h-48 p-4 rounded-xl border-2 border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 resize-none focus:ring-indigo-500 focus:border-indigo-500 transition-colors duration-300" placeholder="Paste your resume content here..."></textarea>
+            <button id="analyze-button" class="mt-4 px-6 py-2 bg-indigo-500 text-white font-medium rounded-full hover:bg-indigo-600 transition-colors duration-300 shadow">
+                Analyze Resume
+            </button>
+        </div>
+
+        <!-- Analysis Section (Hidden by default) -->
+        <div id="loading-spinner" class="mt-8 flex items-center justify-center hidden">
+            <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-500"></div>
+            <p class="ml-3 text-gray-600 dark:text-gray-400">Analyzing your resume...</p>
+        </div>
+
+        <!-- Results Section (Hidden by default) -->
+        <div id="results-section" class="mt-8 hidden">
+            <div class="flex flex-col items-center mb-6">
+                <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Your ATS Score</h2>
+                <div class="relative w-32 h-32 my-4">
+                    <svg class="w-full h-full transform -rotate-90">
+                        <circle class="text-gray-200 dark:text-gray-700" stroke-width="8" stroke="currentColor" fill="transparent" r="60" cx="64" cy="64"/>
+                        <circle id="score-circle" class="text-indigo-500 transition-all duration-1000 ease-out" stroke-width="8" stroke-dasharray="0, 376.99" stroke-linecap="round" stroke="currentColor" fill="transparent" r="60" cx="64" cy="64"/>
+                    </svg>
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <span id="score-text" class="text-4xl font-bold text-gray-900 dark:text-white">0</span>
+                        <span class="text-lg font-bold text-gray-500 dark:text-gray-400 mt-2 ml-1">/100</span>
+                    </div>
+                </div>
+                <button id="analyze-again-btn" class="mt-4 px-6 py-2 bg-indigo-500 text-white font-medium rounded-full hover:bg-indigo-600 transition-colors duration-300 shadow">
+                    Analyze Another Resume
+                </button>
+            </div>
+
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white mb-3">Suggestions for Improvement</h2>
+            <ul id="suggestions-list" class="space-y-3 text-gray-700 dark:text-gray-300">
+                <!-- Suggestions will be populated here by JavaScript -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

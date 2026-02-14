@@ -1,0 +1,27 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    color: #1f2937;
+    transition: background-color 300ms, color 300ms;
+}
+
+body.dark-mode {
+    background-color: #1f2937;
+    color: #f9fafb;
+}
+
+body.dark-mode .bg-white {
+    background-color: #1f2937;
+}
+
+body.dark-mode .dark\:bg-gray-800 {
+    background-color: #1f2937;
+}
+
+body.dark-mode .dark\:text-gray-400 {
+    color: #d1d5db;
+}
+
+body.dark-mode .dark\:text-gray-900 {
+    color: #f9fafb;
+}
